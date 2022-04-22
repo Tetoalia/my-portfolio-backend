@@ -1,3 +1,4 @@
-{ "DBHost": "mongodb://localhost:27017/myblog",
-    "secret":"myblog"
+{
+  "DBHost": "mongodb+srv://user1:user1@cluster0.57ebu.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "secret": "myblog"
 }

@@ -7,7 +7,7 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
-    "start": "node build/index.js",
+    "start": "NODE_ENV=production build/index.js",
     "test": "mocha  src/buildScripts/testSetup.js \"src/tests/**/*.test.js\" --timeout 10000  --exit",
     "coverage": "set NODE_ENV=test&& nyc --check-coverage --reporter=text-summary --reporter=text --reporter=html --lines=60 npm run test"
   },
@@ -28,6 +28,7 @@
     "cloudinary": "^1.28.1",
     "config": "^3.3.7",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.0",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.1.8",
