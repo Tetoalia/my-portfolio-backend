@@ -5,27 +5,26 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.verifyToken = verifyToken;
 
+var _response = require("express/lib/response");
+
 var jwt = require("jsonwebtoken");
 
 var config = require("config"); // Verify Token
 
 
 function verifyToken(req, res, next) {
-  var bearerHeader = req.headers['authorization'];
-
-  if (typeof bearerHeader !== 'undefined') {
-    var bearer = bearerHeader.split(' ');
-    var bearerToken = bearer[1]; // console.log(bearerToken)
-
+  try {
+    var bearerHeader = req.headers.authorization;
+    var bearerToken = bearerHeader && bearerHeader.split(' ')[1];
+    if (bearerHeader == null) return res.sendStatus(401);
     jwt.verify(bearerToken, config.secret, function (err, user) {
       // console.log(err)
-      if (err) return res.sendStatus(401);
+      if (err) return res.sendStatus(403);
       req.user = user;
+      next();
     });
-    next();
-  } else {
-    console.log(bearerHeader);
-    res.sendStatus(401);
+  } catch (err) {
+    console.log(err);
   }
 }
 //# sourceMappingURL=verifyToken.js.map

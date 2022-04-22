@@ -18,11 +18,11 @@ var validateMiddleware = require("../middlewares/validateMiddleware");
 
 /**
  * @swagger
- * security:
- *   bearerAuth: []
  * /query:
  *   get:
  *     summary: GET Queries
+ *     tags:
+ *       - Query
  *     responses:
  *       '400':
  *         description: Bad Request 
@@ -33,30 +33,39 @@ var validateMiddleware = require("../middlewares/validateMiddleware");
  *             schema:
  *               type: array
  *               items:
- *                 type: object
- *                 properties:
- *                   name:
- *                     type: string
- *                     description: The user's name.
- *                     example: Gafuku Ramos
- *                   email:
- *                     type: string
- *                     description: The user's email.
- *                     example: gafuku@gmail.com
- *                   subject:
- *                     type: string
- *                     description: the query subject.
- *                     example: Just want to reach out
- *                   message:
- *                     type: string
- *                     description: The user's message in the query.
- *                     example: i want to link up and talk about gafuku family
+ *                 $ref: '#/components/schemas/Query' 
+ * tags:
+ *   - name: Auth
+ *     description: Routes to access the authentication
+ *   - name: Article
+ *     description: Access to Articles
+ *   - name: Like
+ *     description: Access to Likes
+ *   - name: Query
+ *     description: Access to Queries
+ *   - name: Comment
+ *     description: Access to Comments
  * components:
- *   securitySchemes:
- *     bearerAuth:           
- *       type: http
- *       scheme: bearer
- *       bearerFormat: JWT
+ *   schemas:
+ *     Query:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: The user's name.
+ *           example: Gafuku Ramos
+ *         mail:
+ *           type: string
+ *           description: The user's email.
+ *           example: gafuku@gmail.com
+ *         subject:
+ *           type: string
+ *           description: the query subject.
+ *           example: Just want to reach out
+ *         message:
+ *           type: string
+ *           description: The user's message in the query.
+ *           example: i want to link up and talk about gafuku family
  */
 router.get("/", _verifyToken.verifyToken, /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
@@ -65,30 +74,63 @@ router.get("/", _verifyToken.verifyToken, /*#__PURE__*/function () {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
+            _context.prev = 0;
+            _context.next = 3;
             return Query.find();
 
-          case 2:
+          case 3:
             queries = _context.sent;
-            user = req.user; //  if(user["user"].type == "user"){
+            user = req.user;
+            res.status(200).send(queries);
+            _context.next = 11;
+            break;
 
-            res.status(200).send(queries); //  }
-            // else{
-            //     res.sendStatus(401);
-            // }
+          case 8:
+            _context.prev = 8;
+            _context.t0 = _context["catch"](0);
+            res.status(404).send({
+              Message: "Problem getting articles"
+            });
 
-          case 5:
+          case 11:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function (_x, _x2) {
     return _ref.apply(this, arguments);
   };
 }());
+/** 
+* @swagger
+* /query:
+*   post:
+*     summary: Add New Query
+*     tags:
+*       - Query
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*             schema:
+*               $ref: '#/components/schemas/Query' 
+*     responses:
+*       '400':
+*         description: Bad Request 
+*       '201':
+*         description: Query added.
+*         content:
+*           application/json:
+*             schema:
+*               type: object
+*               properties:
+*                 Message:
+*                   type: string
+*/
+
 router.post("/", validateMiddleware(validateQuery), /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
     var newQuery;

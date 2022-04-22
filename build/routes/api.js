@@ -17,7 +17,7 @@ var _require2 = require("../models/Like"),
 
 var router = express.Router();
 
-var validateMiddleWare = require('../middlewares/validateMiddleware');
+var validateMiddleWare = require("../middlewares/validateMiddleware");
 
 router.get("/", /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
@@ -26,10 +26,10 @@ router.get("/", /*#__PURE__*/function () {
         switch (_context.prev = _context.next) {
           case 0:
             try {
-              res.status(200).send("<h1> Welcome to my blog api </h1>");
+              res.status(200).send("<h1> Welcome to my portfolio api </h1>");
             } catch (error) {
               res.sendStatus(500).send({
-                error: "Problem with request"
+                error: " There is a problem with request"
               });
             }
 

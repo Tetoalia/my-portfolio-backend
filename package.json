@@ -7,7 +7,7 @@
     "clean": "rm -rf build && mkdir build",
     "build-babel": "babel -d ./build ./src -s",
     "build": "npm run clean && npm run build-babel",
-    "start": "babel-node src/index.js",
+    "start": "node build/index.js",
     "test": "mocha  src/buildScripts/testSetup.js \"src/tests/**/*.test.js\" --timeout 10000  --exit",
     "coverage": "set NODE_ENV=test&& nyc --check-coverage --reporter=text-summary --reporter=text --reporter=html --lines=60 npm run test"
   },

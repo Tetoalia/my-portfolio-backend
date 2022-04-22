@@ -20,19 +20,20 @@ var config = require("config");
 
 router.get("/", /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
-    var users;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            _context.next = 2;
-            return User.find();
+            // const users = await User.find()
+            try {
+              res.status.send({
+                Message: "This should be the login page rendered"
+              });
+            } catch (error) {
+              res.status(404).send("Login resource not found");
+            }
 
-          case 2:
-            users = _context.sent;
-            res.send(users);
-
-          case 4:
+          case 1:
           case "end":
             return _context.stop();
         }
@@ -79,14 +80,14 @@ router.get("/", /*#__PURE__*/function () {
 
 router.post("/", /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
-    var user, payload, accessTokenSecret;
+    var user, payload;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.next = 2;
             return User.findOne({
-              username: req.body.username
+              email: req.body.email
             });
 
           case 2:
@@ -97,7 +98,9 @@ router.post("/", /*#__PURE__*/function () {
               break;
             }
 
-            return _context2.abrupt("return", res.status(400).send("Cannot Find User"));
+            return _context2.abrupt("return", res.status(400).send({
+              "Message": "Cannot Find User"
+            }));
 
           case 5:
             _context2.prev = 5;
@@ -117,7 +120,8 @@ router.post("/", /*#__PURE__*/function () {
             };
             jwt.sign(payload, config.secret, function (err, token) {
               res.status(200).send({
-                "token": token
+                "token": token,
+                type: user.type
               });
             });
             _context2.next = 14;
@@ -127,16 +131,16 @@ router.post("/", /*#__PURE__*/function () {
             res.status(400).send("Password Incorrect");
 
           case 14:
-            _context2.next = 19;
+            _context2.next = 20;
             break;
 
           case 16:
             _context2.prev = 16;
             _context2.t0 = _context2["catch"](5);
-            res.sendStatus(405);
-
-          case 19:
-            accessTokenSecret = require("crypto").randomBytes(64).toString("hex");
+            console.log(_context2.t0);
+            res.status(405).send({
+              Message: "Problem with the server"
+            });
 
           case 20:
           case "end":

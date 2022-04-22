@@ -20,7 +20,45 @@ var router = express.Router();
 
 var validateMiddleWare = require('../middlewares/validateMiddleware');
 
-router.get("/", _verifyToken.verifyToken, /*#__PURE__*/function () {
+/**
+ * @swagger
+ * security:
+ *   bearerAuth: []
+ * /article:
+ *   get:
+ *     summary: GET Articles
+ *     tags:
+ *       - Article
+ *     responses:
+ *       '400':
+ *         description: Bad Request 
+ *       '200':
+ *         description: A list of queries.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Article' 
+ * components:
+ *   schemas:
+ *     Article:
+ *       type: object
+ *       properties:
+ *         heading:
+ *           type: string
+ *           description: heading of the article
+ *           example: Manchester United boss Ralf Rangnick believes club getting better
+ *         content: 
+ *           type: string
+ *           description: Detailed contents of the article
+ *           example: The Old Trafford defeat by Chris Wilder's Championship side ended any realistic hope of United winning their first domestic silverware since 2017.
+ *         image:
+ *           type: string
+ *           description: The image in the article.
+ *           example: smilingcat.png
+ */
+router.get("/", /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
     var articles;
     return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -40,8 +78,8 @@ router.get("/", _verifyToken.verifyToken, /*#__PURE__*/function () {
           case 7:
             _context.prev = 7;
             _context.t0 = _context["catch"](0);
-            res.status(500).send({
-              error: "Problem with request"
+            res.status(404).send({
+              error: "Problem getting articles"
             });
 
           case 10:
@@ -56,35 +94,66 @@ router.get("/", _verifyToken.verifyToken, /*#__PURE__*/function () {
     return _ref.apply(this, arguments);
   };
 }());
-router.get("/:id", _verifyToken.verifyToken, /*#__PURE__*/function () {
-  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
-    var _Article;
+/**
+ * @swagger
+ * "/article/{articleId}":
+ *   get:
+ *     summary: Find article by ID
+ *     tags: 
+ *       - Article
+ *     parameters:
+ *       - name: articleId
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The Id of the article
+ *     responses:
+ *       "200":
+ *         description: successful operation
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Article"
+ *       "404":
+ *         description: Article not found
+ */
 
+router.get("/:id", /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(req, res) {
+    var article;
     return regeneratorRuntime.wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
             _context2.prev = 0;
             _context2.next = 3;
-            return _Article.findOne({
+            return Article.findOne({
               _id: req.params.id
             });
 
           case 3:
-            _Article = _context2.sent;
-            res.send(_Article);
-            _context2.next = 11;
+            article = _context2.sent;
+
+            if (article) {
+              res.status(200).send(article);
+            } else {
+              res.status(404).send({
+                error: "Article doesn't exist !"
+              });
+            }
+
+            _context2.next = 10;
             break;
 
           case 7:
             _context2.prev = 7;
             _context2.t0 = _context2["catch"](0);
-            res.status(404);
-            res.send({
+            res.status(404).send({
               error: "Article doesn't exist !"
-            });
+            }); // console.log(err)
 
-          case 11:
+          case 10:
           case "end":
             return _context2.stop();
         }
@@ -96,6 +165,33 @@ router.get("/:id", _verifyToken.verifyToken, /*#__PURE__*/function () {
     return _ref2.apply(this, arguments);
   };
 }());
+/** 
+* @swagger
+* /article:
+*   post:
+*     summary: Add New Article
+*     tags:
+*       - Article
+*     requestBody:
+*       required: true
+*       content:
+*         application/json:
+*             schema:
+*               $ref: '#/components/schemas/Article' 
+*     responses:
+*       '400':
+*         description: Bad Request 
+*       '201':
+*         description: Query added.
+*         content:
+*           application/json:
+*             schema:
+*               type: object
+*               properties:
+*                 Message:
+*                   type: string
+*/
+
 router.post("/", _verifyToken.verifyToken, (0, _validateMiddleware["default"])(validateArticle), /*#__PURE__*/function () {
   var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(req, res) {
     var newArticle;
@@ -143,93 +239,163 @@ router.post("/", _verifyToken.verifyToken, (0, _validateMiddleware["default"])(v
     return _ref3.apply(this, arguments);
   };
 }());
+/**
+ * @swagger
+ * "/article/{articleId}":
+ *   delete:
+ *     summary: Delete article according to ID
+ *     tags: 
+ *       - Article
+ *     parameters:
+ *       - name: articleId
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The Id of the article
+ *     responses:
+ *       "200":
+ *         description: successful operation
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Article"
+ *       "404":
+ *         description: Article not found
+ */
+
 router["delete"]("/:id", _verifyToken.verifyToken, /*#__PURE__*/function () {
   var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(req, res) {
+    var articleUser;
     return regeneratorRuntime.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             _context4.prev = 0;
             _context4.next = 3;
-            return Article.deleteOne({
+            return Article.findOne({
               _id: req.params.id
             });
 
           case 3:
-            res.status(204).send();
-            _context4.next = 9;
+            articleUser = _context4.sent;
+
+            if (!(req.user["id"] == articleUser["userId"])) {
+              _context4.next = 10;
+              break;
+            }
+
+            _context4.next = 7;
+            return Article.deleteOne({
+              _id: req.params.id
+            });
+
+          case 7:
+            res.status(202).send({
+              Message: "Article deleted successfully"
+            });
+            _context4.next = 11;
             break;
 
-          case 6:
-            _context4.prev = 6;
+          case 10:
+            res.status(401).send({
+              Message: "Not Authorized to perform this operation"
+            });
+
+          case 11:
+            _context4.next = 16;
+            break;
+
+          case 13:
+            _context4.prev = 13;
             _context4.t0 = _context4["catch"](0);
             res.status(404).send({
               error: "This article doesn't exist!"
             });
 
-          case 9:
+          case 16:
           case "end":
             return _context4.stop();
         }
       }
-    }, _callee4, null, [[0, 6]]);
+    }, _callee4, null, [[0, 13]]);
   }));
 
   return function (_x7, _x8) {
     return _ref4.apply(this, arguments);
   };
 }());
-router.put("/:id", validateMiddleWare(validateArticle), /*#__PURE__*/function () {
+router.put("/:id", _verifyToken.verifyToken, /*#__PURE__*/function () {
   var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(req, res) {
-    var _Article2;
-
+    var articleUser, article;
     return regeneratorRuntime.wrap(function _callee5$(_context5) {
       while (1) {
         switch (_context5.prev = _context5.next) {
           case 0:
             _context5.prev = 0;
             _context5.next = 3;
-            return _Article2.findOne({
+            return Article.findOne({
               _id: req.params.id
             });
 
           case 3:
-            _Article2 = _context5.sent;
+            articleUser = _context5.sent;
+
+            if (!(req.user["id"] == articleUser["userId"])) {
+              _context5.next = 16;
+              break;
+            }
+
+            _context5.next = 7;
+            return Article.findOne({
+              _id: req.params.id
+            });
+
+          case 7:
+            article = _context5.sent;
 
             if (req.body.heading) {
-              _Article2.heading = req.body.heading;
+              article.heading = req.body.heading;
             }
 
             if (req.body.content) {
-              _Article2.content = req.body.content;
+              article.content = req.body.content;
             }
 
             if (req.body.image) {
-              _Article2.content = req.body.content;
+              article.image = req.body.image;
             }
 
-            _context5.next = 9;
-            return _Article2.save();
+            _context5.next = 13;
+            return article.save();
 
-          case 9:
-            res.send(_Article2);
-            _context5.next = 16;
+          case 13:
+            res.status(200).send(article);
+            _context5.next = 17;
             break;
 
-          case 12:
-            _context5.prev = 12;
-            _context5.t0 = _context5["catch"](0);
-            res.status(404);
-            res.send({
-              error: "Article doesn't exist!"
+          case 16:
+            res.status(401).send({
+              Message: "Not Authorized to perform this operation"
             });
 
-          case 16:
+          case 17:
+            _context5.next = 22;
+            break;
+
+          case 19:
+            _context5.prev = 19;
+            _context5.t0 = _context5["catch"](0);
+            res.status(404).send({
+              error: "We couldn't find that article "
+            }); // console.log(err);
+
+          case 22:
           case "end":
             return _context5.stop();
         }
       }
-    }, _callee5, null, [[0, 12]]);
+    }, _callee5, null, [[0, 19]]);
   }));
 
   return function (_x9, _x10) {

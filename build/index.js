@@ -10,6 +10,8 @@ var router = express.Router();
 
 var mongoose = require("mongoose");
 
+var cors = require("cors");
+
 var swaggerJSDoc = require("swagger-jsdoc");
 
 var swaggerUi = require("swagger-ui-express");
@@ -32,29 +34,47 @@ var PORT = process.env.PORT || 5000;
 
 var config = require("config");
 
+var req = require("express/lib/request");
+
 var swaggerDefinition = {
-  openapi: '3.0.0',
+  openapi: "3.0.0",
   info: {
-    title: 'Express API for My Blog',
-    version: '1.0.0'
+    title: "Express API for My portfolio",
+    version: "1.0.0"
   },
-  description: 'This is a REST API application made with Express. It retrieves data from Mongodb using mongoose.',
+  description: "This is a REST API application made with Express. It retrieves data from Mongodb using mongoose.",
   license: {
-    name: 'Licensed Under MIT',
-    url: 'https://spdx.org/licenses/MIT.html'
+    name: "Licensed Under MIT",
+    url: "https://spdx.org/licenses/MIT.html"
   },
   contact: {
-    name: "Rukundo Kevin",
-    url: 'https://www.rukundokevin.codes'
+    name: "TETO Alia",
+    url: "https://www.tetoalia.codes"
   },
   servers: [{
-    url: 'https://rukundo-kevin-blog.herokuapp.com/'
-  }]
+    url: "https://my-brand-teto-heroku.herokuapp.com/"
+  }, {
+    url: "http://localhost:5000/"
+  }],
+  security: [{
+    bearerAuth: []
+  }],
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+        bearerFormat: "JWT",
+        name: "bearerAuth",
+        "in": "header"
+      }
+    }
+  }
 };
 var options = {
   swaggerDefinition: swaggerDefinition,
   // Paths to files containing OpenAPI definitions
-  apis: ['./routes/*.js']
+  apis: ["src/routes/*.js"]
 };
 var swaggerSpec = swaggerJSDoc(options);
 var app = express();
@@ -71,10 +91,13 @@ var connectDB = /*#__PURE__*/function () {
               useUnifiedTopology: true
             }).then(function () {
               //middlewares
+              app.use(cors({
+                origin: "*"
+              }));
               app.use(express.json()); //middlewares for routes
 
               //middlewares for routes
-              app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+              app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
               app.use("/", api);
               app.use("/article", articleRoutes);
               app.use("/query", queryRouter);
@@ -84,7 +107,7 @@ var connectDB = /*#__PURE__*/function () {
               app.use("/signup", signupRouter);
               app.set("port", PORT);
               app.listen(PORT, function () {
-                if (config.util.getEnv('NODE_ENV') != 'test') {
+                if (config.util.getEnv("NODE_ENV") != "test") {
                   console.log("server started");
                 }
               });
@@ -103,7 +126,7 @@ var connectDB = /*#__PURE__*/function () {
   return function connectDB() {
     return _ref.apply(this, arguments);
   };
-}(); // use as a function        
+}(); // use as a function
 
 
 connectDB();

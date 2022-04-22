@@ -57,7 +57,7 @@ router.get("/", function (req, res) {
 
 router.post("/", validateMiddleWare(validateUser), /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
-    var userExist, salt, hashedPassword, user, users;
+    var userExist, salt, hashedPassword, user;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -65,7 +65,7 @@ router.post("/", validateMiddleWare(validateUser), /*#__PURE__*/function () {
             _context.prev = 0;
             _context.next = 3;
             return User.findOne({
-              username: req.body.username
+              email: req.body.email
             });
 
           case 3:
@@ -76,7 +76,7 @@ router.post("/", validateMiddleWare(validateUser), /*#__PURE__*/function () {
               break;
             }
 
-            return _context.abrupt("return", res.status(400).send("Username Already Taken"));
+            return _context.abrupt("return", res.status(400).send("email Already Taken"));
 
           case 6:
             _context.next = 8;
@@ -90,7 +90,7 @@ router.post("/", validateMiddleWare(validateUser), /*#__PURE__*/function () {
           case 11:
             hashedPassword = _context.sent;
             user = new User({
-              username: req.body.username,
+              email: req.body.email,
               password: hashedPassword,
               type: "user"
             });
@@ -98,29 +98,24 @@ router.post("/", validateMiddleWare(validateUser), /*#__PURE__*/function () {
             return user.save();
 
           case 15:
-            _context.next = 17;
-            return User.find();
-
-          case 17:
-            users = _context.sent;
             res.status(201).send({
               Message: "User registered Successfully"
             });
-            _context.next = 24;
+            _context.next = 21;
             break;
 
-          case 21:
-            _context.prev = 21;
+          case 18:
+            _context.prev = 18;
             _context.t0 = _context["catch"](0);
             // console.log(error)
-            res.status(500).send();
+            res.status(500).send("Problem registering new users");
 
-          case 24:
+          case 21:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 21]]);
+    }, _callee, null, [[0, 18]]);
   }));
 
   return function (_x, _x2) {
