@@ -36,10 +36,10 @@ const swaggerDefinition = {
   },
   servers: [
     {
-      url: "https://my-brand-teto-heroku.herokuapp.com/",
+      url: "http://localhost:5000/",
     },
     {
-      url: "http://localhost:5000/",
+      url: "https://my-brand-heroku.herokuapp.com/",
     },
   ],
   security: [
