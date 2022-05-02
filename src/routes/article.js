@@ -14,7 +14,7 @@ import validateMiddleware from "../middlewares/validateMiddleware";
  *   get:
  *     summary: GET Articles
  *     tags:
- *       - Article
+ *       - Articles
  *     responses:
  *       '400':
  *         description: Bad Request
@@ -33,16 +33,16 @@ import validateMiddleware from "../middlewares/validateMiddleware";
  *       properties:
  *         heading:
  *           type: string
- *           description: heading of the article
+ *           description: Title of the article
  *           example: Women in technology number is rising everyday
  *         content:
  *           type: string
- *           description: Detailed contents of the article
+ *           description: Details of the article
  *           example: Women used to fear technology field and think that it is only for men, but as time comes, they are realising how capable they are.
  *         image:
  *           type: string
  *           description: The image in the article.
- *           example: smilingcat.png
+ *           example: women.png
  */
 
 router.get("/", async (req, res) => {
@@ -58,9 +58,9 @@ router.get("/", async (req, res) => {
  * @swagger
  * "/article/{articleId}":
  *   get:
- *     summary: Find article by ID
+ *     summary: Find the article by ID
  *     tags:
- *       - Article
+ *       - Articles
  *     parameters:
  *       - name: articleId
  *         in: path
@@ -70,13 +70,13 @@ router.get("/", async (req, res) => {
  *         description: The Id of the article
  *     responses:
  *       "200":
- *         description: successful operation
+ *         description:Operation is successful
  *         content:
  *           application/json:
  *             schema:
  *               $ref: "#/components/schemas/Article"
  *       "404":
- *         description: Article not found
+ *         description: Article is not found
  */
 
 router.get("/:id", async (req, res) => {
@@ -95,7 +95,7 @@ router.get("/:id", async (req, res) => {
 
 /**
  * @swagger
- * /article:
+ * /articles:
  *   post:
  *     summary: Add New Article
  *     tags:
@@ -150,7 +150,7 @@ router.post(
  * @swagger
  * "/article/{articleId}":
  *   delete:
- *     summary: Delete article according to ID
+ *     summary: Delete an article according to it's ID
  *     tags:
  *       - Article
  *     parameters:

@@ -179,7 +179,7 @@ describe('API', () => {
               .end((err, res) => {
                     res.should.have.status(201);
                     res.body.should.be.a('object');
-                    res.body.should.have.property('Message').eql('New Query submitted successfully');
+                    res.body.should.have.property('Message').eql('New Query is submitted successfully');
                 done();
               });
         });
@@ -219,7 +219,8 @@ describe('API', () => {
                   .send(like)
                   .set('Authorization', 'JWT ' + token) //token is actual token data
                   .end((err, res) => {
-                    res.body.should.have.property('Message');
+                    //   console.log(res.body)
+                      res.body.should.be.a('object');
                     done();
                   });
             });

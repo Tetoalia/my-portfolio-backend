@@ -1,23 +1,46 @@
 version: 2.1
-
 orbs:
-  node: circleci/node@4.7
+  node: circleci/node@4.7.0
+  coveralls: coveralls/coveralls@1.0.5
 
 jobs:
-  build-and-test:
+  test_and_coverage:
+    working_directory: ~/project/Server
     docker:
-      - image: cimg/node:16.10
+      - image: cimg/node:17.2.0
       - image: circleci/mongo:4.2.0
     steps:
-      - checkout
+      - checkout:
+          path: ~/project
+      - node/install-npm
       - node/install-packages:
+          app-dir: ~/project/Server
+          cache-version: v1
+          cache-path: node_modules
           pkg-manager: npm
       - run:
-          name: Run tests
+          name: test
+          command: npm run test
+      - run:
+          name: code-coverage
           command: npm run coverage
-      - store_artifacts:
-          path: coverage
+      - coveralls/upload
+      - run:
+          name: build
+          command: npm run build
+      - persist_to_workspace:
+          root: ~/project/Server
+          paths:
+            - .
 workflows:
-  sample:
+  test_my_app:
     jobs:
-      - build-and-test
+      - test_and_coverage:
+          context:
+            - cloudinary
+            - JWT_TOKEN
+            - DB
+
+notify:
+  webhooks:
+    - url: https://coveralls.io/webhook?repo_token=${process.env.COVERALLS_REPO_TOKEN}
