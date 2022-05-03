@@ -20,7 +20,7 @@ router.get("/",async (req,res)=>{
  * @swagger
  * /login:
  *   post:
- *     summary: Login to get token
+ *     summary: Please Login to get token
  *     tags:
  *       - Auth
  *     requestBody:

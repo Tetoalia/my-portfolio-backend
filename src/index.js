@@ -21,7 +21,7 @@ const req = require("express/lib/request");
 const swaggerDefinition = {
   openapi: "3.0.0",
   info: {
-    title: "Express API for My portfolio",
+    title: "This is Express API for My portfolio",
     version: "1.0.0",
   },
   description:
@@ -87,10 +87,10 @@ const connectDB = async () => {
       app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
       app.use("/", api);
-      app.use("/article", articleRoutes);
+      app.use("/articles", articleRoutes);
       app.use("/query", queryRouter);
       app.use("/like", likeRouter);
-      app.use("/comment", commentRouter);
+      app.use("/comments", commentRouter);
 
       app.use("/login", loginRouter);
       app.use("/signup", signupRouter);

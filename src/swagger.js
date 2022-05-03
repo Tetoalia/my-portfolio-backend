@@ -5,7 +5,7 @@ const options = {
   definition: {
      openapi: '3.0.0',
     info: {
-      title: 'Express Api For my blog',
+      title: 'Express Api For my portfolio',
       version: '1.0.0',
     },
     paths: {},
