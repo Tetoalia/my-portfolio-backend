@@ -12,11 +12,11 @@ import { User } from "../models/User";
  * @swagger
  * security:
  *   bearerAuth: []
- * /comment:
+ * /article/{articleId}/comments:
  *   get:
- *     summary: GET Comments
+ *     summary: GET Comments of a single article
  *     tags:
- *       - Comment
+ *       - Comments
  *     responses:
  *       '400':
  *         description: Bad Request 
@@ -96,11 +96,11 @@ router.get("/user/:id", async (req,res) =>{
 
 /** 
 * @swagger
-* /comment:
+* /Article/{articleId}/comments:
 *   post:
-*     summary: Add New Comment
+*     summary: Add New Comment to a selected article
 *     tags:
-*       - Comment
+*       - Comments
 *     requestBody:
 *       required: true
 *       content:
@@ -152,7 +152,39 @@ router.post("/",verifyToken,validateMiddleWare(validateComment) , async (req,res
    }
 })
 
-
+/**
+ * @swagger
+ * security:
+ *   bearerAuth: []
+ * /article/{articleId}/comments:
+ *   delete:
+ *     summary: Delete Comments of a single article
+ *     tags:
+ *       - Comments
+ *     responses:
+ *       '400':
+ *         description: Bad Request 
+ *       '401':
+ *         description: Unauthorized
+ *       '200':
+ *         description: A list of comments on articles.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   name:
+ *                     articleId: string
+ *                     description: The Id of the article with comment.
+ *                   userId:
+ *                     type: string
+ *                     description: The Id of the user who commented
+ *                   comment:
+ *                     type: string
+ *                     description: comment contents
+ */
 router.delete("/:id", verifyToken,validateMiddleWare(validateComment), async (req, res) => {
 	try {
 		await Comment.deleteOne({ articleId: req.params.id , userId:req.user["user"]["_id"]})

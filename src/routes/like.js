@@ -13,18 +13,18 @@ import { verifyToken } from "../controllers/verifyToken";
  * @swagger
  * security:
  *   bearerAuth: []
- * /like:
+ * /Likes:
  *   get:
- *     summary: GET Likes
+ *     summary: GET Likes for all articles.
  *     tags:
- *       - Like
+ *       - Likes
  *     responses:
  *       '400':
  *         description: Bad Request
  *       '401':
  *         description: Unauthorized
  *       '200':
- *         description: A list of likes on articles.
+ *         description: This shows all of the likes on articles.
  *         content:
  *           application/json:
  *             schema:
@@ -52,11 +52,11 @@ router.get("/", async (req, res) => {
 
 /**
  * @swagger
- * "/like/article/{articleId}":
+ * "Articles/{articleId}/Likes":
  *   get:
  *     summary: Find likes for one article
  *     tags:
- *       - Like
+ *       - Likes
  *     parameters:
  *       - name: articleId
  *         in: path
@@ -118,11 +118,11 @@ router.get("/:id", async (req, res) => {
 });
 /**
  * @swagger
- * /like:
- *   post:
- *     summary: Add New Like
+ * /Articles/{articleid}/like:
+ *   Post:
+ *     summary: Add New Like to an article
  *     tags:
- *       - Like
+ *       - Likes
  *     requestBody:
  *       required: true
  *       content:
@@ -191,11 +191,11 @@ router.post(
 
 /**
  * @swagger
- * "/like/{articleId}":
+ * "/Articles/{articleId}/Likes":
  *   delete:
- *     summary: Dislike an article
+ *     summary: Delete a like on a certain article
  *     tags:
- *       - Like
+ *       - Likes
  *     parameters:
  *       - name: articleId
  *         in: path
@@ -250,10 +250,10 @@ router.delete(
 
         await newDislike.save();
 
-        res.status(201).send({ Message: "you have disliked this article" });
+        res.status(201).send({ Message: "you disliked this article" });
       }
     } catch {
-      res.status(500).send({ error: "Problem disliking" });
+      res.status(500).send({ error: "Problem when disliking" });
     }
   }
 );

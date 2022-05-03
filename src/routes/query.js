@@ -12,7 +12,7 @@ import { verifyToken } from "../controllers/verifyToken";
  *   get:
  *     summary: GET Queries
  *     tags:
- *       - Query
+ *       - Queries
  *     responses:
  *       '400':
  *         description: Bad Request
@@ -27,9 +27,7 @@ import { verifyToken } from "../controllers/verifyToken";
  * tags:
  *   - name: Auth
  *     description: Routes to access the authentication
- *   - name: Article
- *     description: Access to Articles
- *   - name: Like
+ *   - name: Likes
  *     description: Access to Likes
  *   - name: Queries
  *     description: Access to Queries
@@ -74,7 +72,7 @@ router.get("/", verifyToken, async (req, res) => {
  *   post:
  *     summary: Add New Query
  *     tags:
- *       - Query
+ *       - Queries
  *     requestBody:
  *       required: true
  *       content:

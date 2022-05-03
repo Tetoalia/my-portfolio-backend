@@ -87,10 +87,10 @@ const connectDB = async () => {
       app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
       app.use("/", api);
-      app.use("/article", articleRoutes);
+      app.use("/articles", articleRoutes);
       app.use("/query", queryRouter);
       app.use("/like", likeRouter);
-      app.use("/comment", commentRouter);
+      app.use("/comments", commentRouter);
 
       app.use("/login", loginRouter);
       app.use("/signup", signupRouter);

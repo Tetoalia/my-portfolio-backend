@@ -3,6 +3,8 @@ const { validateArticle, Article } = require("../models/Article");
 const router = express.Router();
 const validateMiddleWare = require("../middlewares/validateMiddleware");
 
+import { id } from "@hapi/joi/lib/base";
+import { route } from "..";
 import { verifyToken } from "../controllers/verifyToken";
 import validateMiddleware from "../middlewares/validateMiddleware";
 
@@ -10,9 +12,9 @@ import validateMiddleware from "../middlewares/validateMiddleware";
  * @swagger
  * security:
  *   bearerAuth: []
- * /article:
+ * /articles:
  *   get:
- *     summary: GET Articles
+ *     summary: GET all articles
  *     tags:
  *       - Articles
  *     responses:
@@ -28,7 +30,7 @@ import validateMiddleware from "../middlewares/validateMiddleware";
  *                 $ref: '#/components/schemas/Article'
  * components:
  *   schemas:
- *     Article:
+ *     Articles:
  *       type: object
  *       properties:
  *         heading:
@@ -56,9 +58,65 @@ router.get("/", async (req, res) => {
 
 /**
  * @swagger
- * "/article/{articleId}":
+ * security:
+ *   bearerAuth: []
+ * /articles/{articleId}:
  *   get:
- *     summary: Find the article by ID
+ *     summary: Get a single article
+ *     tags:
+ *       - Articles
+ *     parameters:
+ *       - name: articleId
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The Id of the article
+ *     responses:
+ *       '400':
+ *         description: Bad Request
+ *       '200':
+ *         description: A list of queries.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Article'
+ * components:
+ *   schemas:
+ *     Articles:
+ *       type: object
+ *       properties:
+ *         heading:
+ *           type: string
+ *           description: Title of the article
+ *           example: Women in technology number is rising everyday
+ *         content:
+ *           type: string
+ *           description: Details of the article
+ *           example: Women used to fear technology field and think that it is only for men, but as time comes, they are realising how capable they are.
+ *         image:
+ *           type: string
+ *           description: The image in the article.
+ *           example: women.png
+ */
+//localhost:5000/Article/45
+router.get("/:articleId", async (req, res) => {
+  try {
+    const articleId = req.params.articleId;
+    const articles = await Article.findById(articleId);
+    res.status(200).send(articles);
+  } catch (error) {
+    res.status(404).send({ error: "Can not find an article" });
+  }
+});
+
+/**
+ * @swagger
+ * "/articles/{articleId}":
+ *   get:
+ *     summary: Find a single article
  *     tags:
  *       - Articles
  *     parameters:
@@ -79,7 +137,7 @@ router.get("/", async (req, res) => {
  *         description: Article is not found
  */
 
-router.get("/:id", async (req, res) => {
+router.get("/:articleId", async (req, res) => {
   try {
     const article = await Article.findOne({ _id: req.params.id });
     if (article) {
@@ -97,15 +155,15 @@ router.get("/:id", async (req, res) => {
  * @swagger
  * /articles:
  *   post:
- *     summary: Add New Article
+ *     summary: Add a new Article
  *     tags:
- *       - Article
+ *       - Articles
  *     requestBody:
  *       required: true
  *       content:
  *         application/json:
  *             schema:
- *               $ref: '#/components/schemas/Article'
+ *               $ref: '#/components/schemas/Articles'
  *     responses:
  *       '400':
  *         description: Bad Request
@@ -148,11 +206,11 @@ router.post(
 
 /**
  * @swagger
- * "/article/{articleId}":
+ * "/articles/{articleId}":
  *   delete:
- *     summary: Delete an article according to it's ID
+ *     summary: Delete a single article
  *     tags:
- *       - Article
+ *       - Articles
  *     parameters:
  *       - name: articleId
  *         in: path
@@ -168,7 +226,7 @@ router.post(
  *             schema:
  *               $ref: "#/components/schemas/Article"
  *       "404":
- *         description: Article not found
+ *         description: An Article is not found
  */
 
 router.delete("/:id", verifyToken, async (req, res) => {
@@ -209,6 +267,55 @@ router.put("/:id", verifyToken, async (req, res) => {
       res
         .status(401)
         .send({ Message: "Not Authorized to perform this operation" });
+    }
+  } catch (err) {
+    res.status(404).send({ error: "We couldn't find that article " });
+    // console.log(err);
+  }
+});
+
+/**
+ * @swagger
+ * "/articles/{articleId}":
+ *   patch:
+ *     summary: Update a single article
+ *     tags:
+ *       - Articles
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Articles'
+ *     parameters:
+ *       - name: articleId
+ *         in: path
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: The Id of the article
+ *     responses:
+ *       "200":
+ *         description: An article is updated succesful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/Article"
+ *       "404":
+ *         description: An Article is not found
+ */
+
+router.patch("/:articleId", verifyToken, async (req, res) => {
+  try {
+    let article = await Article.findOne({ _id: req.params.articleId });
+    if (article) {
+      article.title = req.body.title || article.title;
+      article.content = req.body.content || article.content;
+      article.image = req.body.image || article.image;
+      article.save();
+      return res.status(200).json({ message: "Article is updated" });
+    } else {
+      return res.status(404).json({ message: "Article is not found" });
     }
   } catch (err) {
     res.status(404).send({ error: "We couldn't find that article " });
