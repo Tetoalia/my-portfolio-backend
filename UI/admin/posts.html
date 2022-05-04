@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/admin.css"/>
+    <link rel="stylesheet" href="./posts.css"/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <title>Admin page</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="nav">
+        <ul>
+          <li>
+            <a href="#"
+              ><span class="icon"></span
+              ><span class="title"><h2>Alia</h2></span></a
+            >
+          </li>
+          <li>
+            <a href="../admin.html"
+              ><span class="icon"><i class="fa fa-home"></i></span
+              ><span class="title">Dashboard</span></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><span class="icon"><i class="fa fa-users"></i> </span
+              ><span class="title">Users</span></a
+            >
+          </li>
+          <li>
+            <a href="./messages.html"
+              ><span class="icon"><i class="fa fa-envelope"></i></span
+              ><span class="title">Message</span></a
+            >
+          </li>
+          <li>
+            <a class="current" href="#"
+              ><span class="icon"><i class="fa fa-newspaper-o"></i></span
+              ><span class="title">Posts</span></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              ><span class="icon"><i class="fa fa-cog"></i></span
+              ><span class="title">Setting</span></a
+            >
+          </li>
+          <li>
+            <a onclick="handleLogout()"
+              ><span class="icon"><i class="fa fa-sign-out"></i></span
+              ><span class="title">Sign out</span></a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="main">
+        <div class="top-bar">
+          <div class="toggle" onclick="toggleMenu()"></div>
+          <div class="search">
+            <label for="search">
+              <input type="text" placeholder="Search any thing" id="" />
+              <img
+                src="https://img.icons8.com/material-outlined/24/000000/search--v1.png"
+              />
+            </label>
+          </div>
+          <div class="users">
+            <img src="../img/male1.png" alt="" srcset="" />
+          </div>
+        </div>
+        <div class="content">
+          <div class="card-box">
+            <div class="card">
+              <div>
+                <div class="number">15</div>
+                <div class="card-name">Posts</div>
+              </div>
+              <div class="icon-box">
+                <i class="fa fa-newspaper-o"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-box">
+            <div class="card">
+              <div>
+                <div class="number">5</div>
+                <div class="card-name">users</div>
+              </div>
+              <div class="icon-box">
+                <i class="fa fa-users"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-box">
+            <div class="card">
+              <div>
+                <div class="number">35</div>
+                <div class="card-name">Comments</div>
+              </div>
+              <div class="icon-box">
+                <i class="fa fa-comments"></i>
+              </div>
+            </div>
+          </div>
+          <div class="card-box">
+            <div class="card">
+              <div>
+
+                <div class="number">35</div>
+                <div class="card-name">Messages</div>
+              </div>
+              <div class="icon-box">
+                <i class="fa fa-envelope"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="details">
+          <div class="recentPosts">
+            <div class="card-header">
+              <h2>Posts</h2>
+            </div>
+            <section class="blog" id="blog">
+                <div class="main-nav">
+                            <div class="boxes">
+                        <div class="cards">
+                          <!-- <i class="fas fa-bars"></i> -->
+                          <img src="../img/data-security.jpg">
+                          <h5>Web Development</h5>
+                          <div class="prag">
+                            <p>
+                              Every website should be built with two primary goals: Firstly,
+                              it needs to work across all devices. Secondly, it needs to be
+                              fast as possible.
+                            </p>
+                            <p style="text-align: center">
+                              <a class="button" href="./article1.html">Edit</a>
+                              <a class="button" href="article1.html">Delete</a>
+                            </p>
+                          </div>
+                        </div>
+              
+                        <div class="cards">
+                          <!-- <i class="fas fa-images"></i> -->
+                          <img src="../img/cryptocurrency.jpg">
+                          <h5>Graphic Designer</h5>
+                          <div class="prag">
+                            <p>
+                              Every website should be built with two primary goals: Firstly,
+                              it needs to work across all devices. Secondly, it needs to be
+                              fast as possible.
+                            </p>
+                            <p style="text-align: center">
+                              <a class="button" href="#">Edit</a>
+                               <a class="button" href="#">Delete</a>
+                            
+                            </p>
+                          </div>
+                        </div>
+              
+                        <div class="cards">
+                        
+                          <!-- <i class="fas fa-film"></i> -->
+                          <img src="../img/online-mentoring.jpg">
+                          <h5>Online mentoring</h5>
+                          <div class="prag">
+                            <p>
+                              Every website should be built with two primary goals: Firstly,
+                              it needs to work across all devices. Secondly, it needs to be
+                              fast as possible.
+                            </p>
+                            <p style="text-align: center">
+                              <a class="button" href="#">Edit</a>
+                               <a class="button" href="#">Delete</a>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="cards">
+                            <!-- <i class="fas fa-film"></i> -->
+                            <img src="img/5.jpg">
+                            <h5>E-BIZ</h5>
+                            <div class="prag">
+                              <p>
+                                Every website should be built with two primary goals: Firstly,
+                                it needs to work across all devices. Secondly, it needs to be
+                                fast as possible.
+                              </p>
+                              <p style="text-align: center">
+                                <a class="button" href="#">Edit</a>
+                                 <a class="button" href="#">Delete</a>
+                              </p>
+                            </div>
+                          </div>
+                      </div>
+                          </div>
+            </section>
+          </div>
+          <div class="recent-users">
+            <div class="cardHeader">
+              <h2>Create a Post</h2>
+            </div>
+            <div class="new-post">
+              <form id="createPostForm">
+                <div class="form-control">
+                  <label for="title">Title</label>
+                  <input type="text" id="postTitle" placeholder="Post title" />
+                </div>
+                <div class="form-control">
+                  <label for="title">Description</label>
+                  <textarea
+                    id="postDescription"
+                    placeholder="Post description"
+                  ></textarea>
+                </div>
+                <div class="form-control">
+                  <label for="title">Image</label>
+                  <input type="text" id="postImage" placeholder="Post title" />
+                </div>
+
+                <button type="submit">Create a post</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        let toggle = document.querySelector('.toggle');
+        let navigation = document.querySelector('.nav');
+        let main = document.querySelector('.main');
+        toggle.classList.toggle('active');
+        navigation.classList.toggle('active');
+        main.classList.toggle('active');
+      }
+    </script>
+    <script src="js/protect_admin.js"></script>
+    <script>
+      const handleLogout = () => {
+        localStorage.removeItem('loggedInUser');
+        window.location.reload();
+      };
+      document
+        .getElementById('createPostForm')
+        .addEventListener('submit', (e) => {
+          e.preventDefault();
+          const postTitle = document.getElementById('postTitle');
+          const postDescription = document.getElementById('postDescription');
+          const postImage = document.getElementById('postDescription');
+          const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+          if (
+            postTitle.value.trim() != '' &&
+            postDescription.value.trim() != '' &&
+            postImage.value.trim() != ''
+          ) {
+            if (localStorage.getItem('blogs')) {
+              let oldPosts = JSON.parse(localStorage.getItem('blogs'));
+              oldPosts.push({
+                title: postTitle.value,
+                image: postImage.value,
+                description: postDescription.value,
+                owner: loggedInUser.username,
+                comments: [],
+              });
+              localStorage.setItem('blogs', JSON.stringify(oldPosts));
+              document.getElementById('createPostForm').reset();
+              getAllBlogs();
+            } else {
+              const blog = [
+                {
+                  title: postTitle.value,
+                  image: postImage.value,
+                  description: postDescription.value,
+                  owner: loggedInUser.username,
+                  comments: [],
+                },
+              ];
+              localStorage.setItem('blogs', JSON.stringify(blog));
+              document.getElementById('createPostForm').reset();
+              getAllBlogs();
+            }
+          } else {
+            postTitle.focus();
+          }
+        });
+
+      const getAllBlogs = () => {
+        const blogs = JSON.parse(localStorage.getItem('blogs'));
+
+        for (let i = 0; i < blogs.length; i++) {
+          document.getElementById('postsContainer').innerHTML += `
+          <td>${blogs[i].title}</td>
+          <td>${blogs[i].owner}</td>
+          <td>${blogs[i].comments.length}</td>
+          <td><button style='cursor:pointer;background:transparent;color:red;border:none;' title='delete this post' onclick="handleDeletePost(${i})"><i class="fa fa-trash"></i></button></td>
+          <td><button style='cursor:pointer;background:transparent;color:blue;border:none;' title='update this post''><i class='fa fa-edit'></i></button></td>
+          `;
+        }
+      };
+
+      window.onload = () => {
+        getAllBlogs();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,155 @@
+
+img{
+    height:100px;
+    width:100px;
+}
+
+.cards h5{
+    color:dodgerblue;
+  }
+  .cards {
+    height: 300px;
+    width: 300px;
+    padding: 20px 35px;
+    background: white;
+    border-radius: 20px;
+    margin: 15px;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .cards img {
+    font-size: 50px;
+    display: block;
+    text-align: center;
+    margin: 25px 0px;
+    color: dodgerblue;
+  }
+  .main-nav{
+
+    background-color: white;
+    min-height: 100vh;
+    margin-bottom: 20px;
+    margin-left: 20px;
+ }
+ .blog h2{
+    color: dodgerblue;
+    font-size: 30px;
+    justify-content: right;
+    padding-top: 50px;
+ 
+ }
+ .upper p{
+    color: white;
+    font-size: 30px;
+ }
+ .main-nav img{
+    height: 240px;
+    width: 300px;
+ }
+ .boxes {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 400px;
+   flex-wrap: wrap;
+ }
+ .card {
+   height: 400px;
+   width: 384px;
+   padding: 20px 35px;
+   background: #191919;
+   border-radius: 20px;
+   margin: 15px;
+   position: relative;
+   overflow: hidden;
+   text-align: center;
+ 
+ }
+ .cards h5{
+   color:dodgerblue;
+ }
+ .cards {
+   height: 650px;
+   width: 384px;
+   padding: 20px 35px;
+   background: #191919;
+   border-radius: 20px;
+   margin: 15px;
+   position: relative;
+   overflow: hidden;
+   text-align: center;
+ }
+ .cards img {
+   font-size: 50px;
+   display: block;
+   text-align: center;
+   margin: 25px 0px;
+   color: dodgerblue;
+ }
+ h5 {
+   color: white;
+   font-size: 23px;
+   margin-bottom: 15px;
+ }
+ .prag p {
+   color: white;
+   font-size: 25px;
+   line-height: 27px;
+   margin-bottom: 25px;
+   font-family: 'Gill Sans';
+ }
+ .card h5{
+   color:dodgerblue;
+   font-size: 28px;
+ }
+ .cards .button {
+   background-color: dodgerblue;
+   color: white;
+   text-decoration: none;
+   border: 2px solid transparent;
+   font-weight: bold;
+   padding: 9px 22px;
+   border-radius: 30px;
+   transition: transform 0.4s;
+ }
+ .cards .button:hover {
+   background-color: transparent;
+   border: 2px solid;
+   cursor: pointer;
+ }
+ .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .card-header h2 {
+    font-weight: 600;
+  }
+  .card-box {
+    position: relative;
+    flex: auto;
+    padding: 20px;
+  }
+  .card-box .card {
+    position: relative;
+    background-color: #e2e2e2;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }
+  .card-box .card .numbers {
+    position: relative;
+    font-size: 2em;
+    font-weight: 500;
+  }
+ @media only screen and (max-width: 768px) {
+   .skills-center {
+     grid-template-columns: 1fr;
+   }
+ }
+ .read {
+   display: none;
+ }
+ 

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="./styles/admin.css"/>
+  <link rel="stylesheet" href="./styles/mobileview.css"/>
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+ 
+
+  <title>Admin</title>
+</head>
+<body>
+ <div class="hero" >
+        <nav>
+          <div class="max-width">
+            <div class="logo"><a href="/index.html">Stri<span>Ker</span></a></div>
+          <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+            <a href="/login.html" class="btn"> Logout </a> 
+           </div>
+        
+        </nav>
+    </div>
+    </header>
+
+    <!-- /////////////////////////////////////////// -->
+    <content class="sections-container">
+      <sidebar class="left-sidebar">
+        <div class="position-admin-links">
+          <div class="fixed-sidebar">
+          <div class="title-holder">
+            <h1 class="title">DASH-BOARD</h1>
+            <div class="title-underline"></div>
+          </div>
+          <i class="fa fa-bars"></i> 
+        </div>
+        <div class="sidebar-holder">
+          <div class="articles-container">
+            <div class="article-holder">
+              <i class="fa fa-caret-right"></i>
+              <p class="articles">Articles</p>
+            </div>
+            <div class="articles-holder">
+              <div class="list-value">
+                <p class="list">LIST</p>
+              </div>
+              <div class="create-value" id="create-blog">
+                <p class="create">Create article</p>
+              </div>
+            </div>
+          </div>
+         
+        
+          
+        </div>
+        </div>
+        
+       
+    
+       
+     
+        
+      </sidebar>
+
+      
+
+      <div class="model" id="my-model">
+        <div class="model-content">
+          <span class="close">&times;</span>
+          <div class="model-title">
+            <h2 class="create-article">Create Article</h2>
+            <div class="create-article-underline"></div>
+          </div>
+          <form class="create-article-form">
+            <div class="create-article-title">
+              <input autofocus type="text" name="title" class="title-create"  placeholder="Article Title">
+              <span class="title-error error-message"></span>
+            </div>
+            <div class="upload-article-image">
+              <input type="file" name="file" class="article-picture" accept="image/x-jpeg,image/x-png">
+
+            </div>
+            <div class="preview-picture">
+              <img id="image-preview" src="" width="100%" height="100%"alt=""/>
+              <span class="preview-picture-alt">Image Preview</span>
+            </div>
+            <div class="article-content">
+              <textarea name="description" id="" cols="30" rows="10" placeholder="article description" class="detailed-article-description ckeditor"></textarea>
+              <span class="detailed-description error-message"></span>
+            </div>
+            <div class="position-content">
+              <div class="submit-cancel-btn">
+              <div class="submit-btn">
+                Publish
+              </div>
+              <div class="cancel-btn">
+                Cancel
+              </div>
+            </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+      <div class="model" id="my-edit-model">
+        <div class="model-content">
+          <span class="close">&times;</span>
+          <div class="model-title">
+            <h2 class="create-article">Update Article</h2>
+            <div class="create-article-underline"></div>
+          </div>
+          <form class="create-article-form">
+            <div class="create-article-title">
+              <input type="text" class="title-update" name="title" placeholder="Article Title">
+              <span class="title-update-error error-message hidden">title is required</span>
+            </div>
+            <div class="upload-article-image">
+              <input type="file" class="article-picture-update" accept="image/x-jpeg,image/x-png">
+
+            </div>
+            <div class="preview-picture">
+              <img id="image-preview-update" src="" width="100%" height="100%"alt=""/>
+              <span class="preview-picture-alt">Image Preview</span>
+            </div>
+            <div class="article-content">
+              <textarea name="description" id="" cols="30" rows="10" placeholder="article description" class="detailed-update-description"></textarea>
+              <span class="detailed-update-description error-message hidden">Body is required</span>
+            </div>
+            <div class="position-content">
+              <div class="submit-cancel-btn">
+              <div class="submit-update-btn">
+                Update
+              </div>
+              <div class="cancel-update-btn">
+                Cancel
+              </div>
+            </div>
+            </div>
+            
+          </form>
+        </div>
+      </div>
+      <div class="model" id="my-delete-model">
+        <div class="model-content-delete">
+          <span class="close">&times;</span>
+          <div class="comfirm-delete">
+            <p class="deleted">Are you sure you want to delete this Article</p>
+          </div>
+          <div class="comfirm-cancel">
+            <div class="comfirm">
+              Delete
+            </div>
+            <div class="cancel-delete">
+              Cancel
+            </div>
+          </div>
+        </div>
+      </div>
+      <content class="section-container">
+        <div class="section-title">
+          <h1 class="title-article">Articles</h1>
+        </div>
+        <section class="section-content">
+        </section>
+      </content>
+
+  
+      <div class="model" id="my-update-model">
+        <div class="model-content-skills">
+          <span class="close">&times;</span>
+          <div class="create-skill-title">
+            <p class="skills-header">Update Skill</p>
+            <div class="skills-underline"></div>
+          </div>
+          
+          </div>
+          
+        </div>
+      </div>
+      <div class="model" id="my-delete-skill-model">
+        <div class="model-content-delete">
+          <span class="close">&times;</span>
+          <div class="comfirm-delete">
+            <p class="deleted">Are you sure you want to remove this skill.</p>
+          </div>
+          <div class="comfirm-cancel">
+            <div class="comfirm-skill-delete">
+              Delete
+            </div>
+            <div class="cancel-skill-delete">
+              Cancel
+            </div>
+          </div>
+        </div>
+      </div>
+      <sidebar class="right-sidebar">
+          <h2>LOCATION <h2>
+          <h5>(latitude,longitude)</h5>
+         <div class="lat-div"></div>
+        <div class="lon-div"></div>
+      </sidebar>
+    </content>
+  </div>
+
+  <!-- scripts -->
+  <script src="/munye/model.js"></script>
+  <script src="/munye/js/skillsModel.js"></script>
+  <script src="/munye/js/adminHambuger.js"></script>
+  <script src="/munye/js/blogs.js"></script>
+  <script>
+    const logoutBtn = document.querySelector("#logout-btn");
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      
+      const newCredentials = localStorage.getItem("loginCredentials")
+      const cred = JSON.parse(newCredentials)
+      cred.isLoggedIn = false;
+      const credentials = JSON.stringify(cred)
+      localStorage.setItem("loginCredentials", credentials);
+      window.location.replace("../login.html");
+    });
+
+
+    
+  </script>
+</body>
+</html>

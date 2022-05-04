@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/article.css"/>
+  <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet"> 
+  <title>Blog-article</title>
+
+</head>
+<body>
+ 
+  <div class="hero" id="blog" >
+        <nav>
+          <div class="max-width">
+            <div class="logo"><a href="/index.html">Stri<span>Ker</span></a></div>
+            <ul>
+                <li><a href="/blog.html">Home</a></li>
+                <li><a href="/index.html">Portfolio</a></li>
+            </ul>
+          <div class="burger">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+          </div>
+            <a href="/login.html" class="btn"> Login/Signup </a> 
+           </div>
+        
+        </nav>
+  
+  
+  <div class="container">
+    <div class="content">
+      <div class="blog-image">
+        <img src="/img/11.jpg" alt="dockeriziation working ahead" class="blog-picture">
+      </div>
+      <div class="blogger-profile-date">
+        <div class="blogger-image">
+          <img src="/img/1.png" alt="blog owner profile picture" class="blogger">
+        </div>
+        <div class="blogger-name-date">
+          <h6 class="blogger-name">Sam Striker</h6>
+          <p class="date-posted">Jan, 01, 2021</p>
+        </div>
+      </div>
+      <div class="blog-title-container">
+        <h3 class="title-blog">
+        </h3>
+      </div>
+      <div class="blog-full-content">
+        
+      </div>
+      <div class="blog-final-line"></div>
+      <div class="likes">
+        <a href="" class="like" ><i class="fa fa-thumbs-up"></i></a>
+        <p id="likes-number"></p>
+      </div>
+      <form>
+        <div class="blog-comment">
+          <div class="name-title">
+            <h3 class="guest-name">Name</h3>
+            <!-- <div class="subscribe">
+              subscribe
+            </div> -->
+          </div>
+          <div class="name-input">
+            <input name="name" id="name" type="text" placeholder="Enter your Name"/>
+            <span class="name error-message"></span>
+          </div>
+          <div class="comments-title">
+            <h3 class="guest-comment">Comments</h3>
+            <!-- <div class="subscribe">
+              subscribe
+            </div> -->
+          </div>
+          <div class="comments-input">
+            <textarea name="comment" id="comment" cols="30" rows="10" placeholder= "Enter your comment Here"></textarea>
+            <span class="comment error-message"></span>
+            <div class="comment-btn">SEND</div>
+          </div>
+        </div>
+      </form>
+        <div class="comments-container" id="comment-holder">
+          <div class="comment-guest">
+            <div class="guest-profile">
+              <img src="/img/12.jpg" alt="guest profile picture" class="guest">
+            </div>
+
+            <div class="comment-holder" >
+              <div class="guest-comment">
+                <h6 class="guest-name">Mugisha</h6>
+                <p class="guest-dot">.</p>
+                <p class="date">Jan,01,2022</p>
+              </div>
+              <div class="comment-description">
+                <p class="comment">
+                  nice one thanks!
+                </p>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./auth.js"></script>
+  <script src="./blog.js"></script>
+  <script src="./comment.js"></script>
+  <script>
+    const blogId = location.href.split('?id=')[1];
+    const blogs = JSON.parse(localStorage.getItem('blogList'));
+    const currrentBlog = blogs.find(b => b.id === +blogId);
+    document.querySelector('.blog-full-content').textContent = currrentBlog.description;
+    document.querySelector('.title-blog').textContent = currrentBlog.title;
+    document.querySelector('.blog-picture').src = currrentBlog.imageUrl;
+    document.querySelector('.date-posted').textContent = currrentBlog.createdAt;
+  </script>
+</body>
+</html>

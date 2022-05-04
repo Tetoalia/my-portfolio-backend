@@ -1,0 +1,473 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'poppins';
+}
+.menu-bars {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 6px 0;
+}
+.container {
+  position: relative;
+  width: 100%;
+}
+.nav.active {
+  width: 60px;
+}
+.nav {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: rgb(5, 14, 53);
+  transition: 0.5s;
+  overflow: auto;
+}
+.nav ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.nav ul li {
+  width: 100%;
+  position: relative;
+  list-style: none;
+}
+.nav ul li:hover {
+  background: #018ac9;
+  cursor: pointer;
+}
+.current {
+  background: #018ac9;
+}
+.nav ul li:nth-child(1) {
+  margin-bottom: 20px;
+}
+.nav ul li:nth-child(1):hover {
+  background: transparent;
+}
+.nav ul li a {
+  color: #e2e2e2;
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+}
+.nav ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 60px;
+  text-align: center;
+}
+
+.nav ul li a .icon .fa {
+  color: #e2e2e2;
+  font-size: 24px;
+  height: 20px;
+}
+.nav ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  white-space: nowrap;
+}
+.main {
+  position: absolute;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background-color: aliceblue;
+  transition: 0.5s;
+}
+.main.active {
+  width: calc(100% - 60px);
+  left: 60px;
+}
+.main .top-bar {
+  width: 100%;
+  background: #fff;
+  padding: 0 10 px;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+}
+.toggle::before {
+  content: url('../images/svg/menu.svg');
+  position: absolute;
+  width: 100%;
+  height: 100px;
+  line-height: 60px;
+  font-size: 24px;
+  text-align: center;
+}
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+.search label {
+  position: relative;
+  width: 100%;
+}
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.search label img {
+  position: absolute;
+  left: 15px;
+  top: 4px;
+}
+.users {
+  position: relative;
+  min-width: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+.users img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.content {
+  display: flex;
+  flex-direction: row;
+}
+.card-box {
+  position: relative;
+  flex: auto;
+  padding: 20px;
+}
+.card-box .card {
+  position: relative;
+  background-color: #e2e2e2;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+.card-box .card .numbers {
+  position: relative;
+  font-size: 2em;
+  font-weight: 500;
+}
+.card-box .card .card-name {
+  color: #999;
+}
+.card-box .card .icon-box {
+  font-size: 2.5em;
+  color: #018ac9;
+}
+
+.details {
+  position: relative;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 20px;
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 2fr 1fr;
+}
+.details .recentPosts {
+  position: relative;
+  min-height: 530px;
+  background: #fff;
+  padding: 20px;
+  overflow: auto;
+}
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.card-header h2 {
+  font-weight: 600;
+}
+.btn {
+  position: relative;
+  padding: 5px 10px;
+  background: #00aff0;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+
+}
+
+
+.details table thead td {
+  font-weight: 600;
+}
+
+.details .recentPosts table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.details .recentPosts table tbody tr:hover {
+  background: #00aff0;
+  color: #e2e2e2;
+}
+.details .recentPosts table tbody tr:last-child {
+  border-bottom: none;
+}
+.details .recentPosts table tr td {
+  padding: 9px 5px;
+}
+.details .recentPosts table thead tr td:last-child,
+.details .recentPosts table tbody tr td:last-child {
+  text-align: right;
+}
+.details .recentPosts table thead tr td:nth-child(2),
+.details .recentPosts table tbody tr td:nth-child(2) {
+  text-align: right;
+  padding-right: 20px;
+}
+.details .recentPosts table thead tr td:nth-child(3),
+.details .recentPosts table tbody tr td:nth-child(3) {
+  text-align: center;
+}
+.status {
+  background: red;
+  position: relative;
+  padding: 2px 4px;
+  color: #e3e3e3;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+.approved {
+  background: #3dff9e;
+}
+.pending {
+  background: #ffd000;
+  color: #fff;
+}
+.reported {
+  background: dodgerblue;
+}
+.details .recent-users {
+  position: relative;
+  min-height: 350px;
+  background:white;
+  padding: 20px;
+  height: fit-content;
+}
+.details .recent-users .image-box {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  /* overflow: hidden; */
+}
+.details .recent-users .image-box img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.details .recent-users table tr:hover {
+  background: dodgerblue;
+  color: #fff;
+}
+.details .recent-users table tr td {
+  padding: 7px 10px;
+}
+.details .recent-users table tr td h4 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.2em;
+}
+.details .recent-users table tr td h4 span {
+  font-size: 14px;
+  color: #999;
+}
+.new-post form .form-control {
+  display: flex;
+  flex-direction: column;
+}
+.new-post form .form-control label {
+  font-size: 16px;
+  font-weight: 500;
+}
+.new-post form .form-control input[type='text'],
+textarea {
+  outline: none;
+  font-size: 16;
+  padding: 5px 10px;
+  border: 1px solid #e2e2e2;
+  border-radius: 5px;
+}
+.new-post form .form-control input[type='file'] {
+}
+div.upload {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: inline-block;
+  height: 50px;
+  padding: 3px 40px 3px 3px;
+  position: relative;
+  width: auto;
+}
+
+div.upload:hover {
+  opacity: 0.95;
+}
+
+div.upload input[type='file'] {
+  display: input-block;
+  width: 100%;
+  height: 30px;
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+}
+.uploadButton {
+  background-color: #425f9c;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  cursor: pointer; 
+  height: 30px;
+  margin-right: 15px;
+  
+  padding: 0 20px;
+  box-sizing: content-box;
+}
+
+.fileName {
+  font-family: Arial;
+  font-size: 14px;
+}
+
+.upload,
+.uploadButton {
+  height: 38px;
+}
+
+.form-control textarea {
+  resize: vertical;
+  height: 30%;
+}
+
+.new-post form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 10px;
+  background: #018ac9;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin-top: 15px;
+  width: 100%;
+  color: #fff;
+}
+
+.new-post form {
+  margin-top: 1.5rem;
+}
+/* to all devices */
+@media (max-width: 992px) {
+  .nav {
+    left: -300px;
+  }
+  .nav.active {
+    left: 0;
+    width: 300px;
+  }
+  main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    width: calc(100%-300px);
+    left: 300px;
+  }
+  .card-box {
+    padding: 10px;
+  }
+}
+
+@media (max-width: 800px) {
+  /* for tablets */
+  .content {
+    flex-direction: column;
+  }
+  .details {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .card-header h2 {
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  /* for mobile phone */
+  .card-box {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .details .recentPosts {
+    overflow-x: auto;
+    
+  }
+  .details .recentPosts table {
+    width: 600px;
+  }
+  .nav {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .nav.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle {
+    z-index: 1000;
+    right: 0;
+    left: initial;
+  }
+  .toggle.active::before {
+    color: #fff;
+  }
+  .main,
+  .main.active {
+    width: 100%;
+    left: 0;
+  }
+}

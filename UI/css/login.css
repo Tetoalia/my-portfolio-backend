@@ -1,0 +1,259 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'josefin sans' , sans-serif;
+    box-sizing: border-box;
+}
+body {
+   background-color: black;
+   min-height: 100vh;
+   width: 100%;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+ nav {
+     z-index: 999;
+     position: fixed;
+     width: 100%;
+     padding-left: 3%;
+     padding-right: 3%;      
+     background-color: #101010;
+     height: 11%;
+     margin-top:-85px;
+}
+
+.max-width {
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   max-width: 1300px;
+   padding-top: 5px;
+   
+
+}
+
+.logo a {
+    color: white;
+    font-size: 35px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none;
+
+}
+span {
+   color:dodgerblue;
+  
+}
+nav ul li {
+   list-style-type: none;
+   display: inline-block;
+   padding: 10px 25px;
+}
+nav ul li a{
+   color: white;
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 20px;
+   text-transform: capitalize;
+   transition: .3s;
+}
+
+nav ul li a:hover {
+   color: dodgerblue;
+   transition: .3s;
+}
+.btn{
+   background-color: dodgerblue;
+   color: white;
+   text-decoration: none;
+   border: 2px solid transparent;
+   font-weight: bold;
+   padding: 9px 28px;
+   border-radius: 30px;
+   transition: transform .4s;
+
+}
+.btn:hover {
+   transform: scale(1.2);
+}
+
+
+button {
+   background-color: dodgerblue;
+   color: white;
+   text-decoration: none;
+   border: 2px solid transparent;
+   font-weight: bold;
+   padding: 13px 30px;
+   border-radius: 30px;
+   transition: .4s;
+}
+button:hover {
+   background-color: transparent;
+   border: 2px solid;
+   cursor: pointer;
+}
+
+.burger div {
+   width: 20px;
+   height: 2px;
+   background-color: dodgerblue;
+   margin: 3px;
+   padding-top: 3px;
+   transition: all 0.3s ease;
+}
+
+.burger {
+   display: none;
+   cursor: pointer;
+}
+
+h1 {
+   font-weight: bold;
+   margin: 0;
+} 
+
+h2 {
+
+text-align: center;
+font-size: 45px;
+
+
+}
+
+p {
+   font-size: 14px;
+   font-weight: 100;
+   line-height: 20px;
+   letter-spacing: 0.5px;
+   margin: 70px 20px 70px;
+}
+
+/* span {
+   font-size: 16px;
+} */
+
+a{
+   color: purple;
+   font-size: 14px;
+   text-decoration: none;
+   margin: 15px 0;
+}
+
+.abana {
+   border-radius: 20px;
+   border: 1px solid dodgerblue;
+   background-color: dodgerblue;
+   color: #000000;
+   font-size: 10px;
+   font-weight: bold;
+   padding: 12px 45px;
+   letter-spacing: 1px;
+   text-transform: uppercase;
+   transition: transform 80ms ease-in;
+   cursor: pointer;
+   margin-top: 0.5rem;
+}
+/* button:active {
+   transform: scale(0.95);
+}
+button:focus {
+   outline: none;
+}
+button.ghost {
+   background-color: transparent;
+   border-color: #CFFFB3;
+}  */
+
+.abana:hover {
+   transform: scale(1.2);
+}
+
+
+form {
+   background-color: white;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   /* padding: 38px 50px; */
+   text-align: center;
+   padding-top: 20px;
+   /* margin: 10px auto; */
+   
+}
+
+input {
+   background-color: #eee;
+   border: none;
+   padding: 12px 15px;
+   margin: 8px 0px;
+   width: 73%;
+}
+
+.container {
+   background-color: black;
+   border-radius: 10px;
+   box-shadow: 0 14px 20px rgba(0,0,0,0.25),
+               0 10px 10px rgba(0,0,0,0.22);
+   display: flex;
+   align-items: center;
+   overflow: hidden;
+   margin: auto ;
+   margin-top: 5rem;
+   width: 500px;
+   max-width: 100%;
+  
+   
+}
+
+.form-container {
+   width: 50%;
+   transition: all 0.6s ease-in-out;
+   padding-top: 80px;
+
+}
+
+.sign-in-container {
+   left: 0;
+   width: 100%;
+   z-index: 2;
+}
+
+.sign-up-container {
+   left: 0;
+   width: 100%;
+   z-index: 1;
+}
+.social-container {
+   margin: 10px 0;
+   color: dodgerblue;
+
+
+}
+.social-container a {
+   border: 1px solid #000;
+   border-radius: 50%;
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   margin: 0 5px;
+   height: 40px;
+   width: 40px;
+}
+
+.error-message, .error-email, .error-password, .error, .error1 {
+   color: red;
+   margin: 0 !important;
+   font-weight: 800;
+}
+
+#error11, #error12 {
+   color: red;
+   margin: 0 !important;
+   
+}

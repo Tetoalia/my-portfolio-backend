@@ -1,0 +1,324 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@200;300;400;600;700&family=Raleway:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,700&display=swap');
+
+:root{
+  --headerback:#252934;
+  --navback:#131a22;
+  --navborder:#CFFFB3;
+  --textColor:#F7C548;
+  --textwhite:#ffff;
+  --textSecondColor:#5A5A5A;
+  --skillBackground:#E5E2E2;
+  --skillanim:#4cb112;
+  --titleText:#444649;
+  --projectback:#f5f5f5;
+  --bordersides:rgba(134, 136, 139,0.5);
+}
+*{
+  margin:0;
+  padding:0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: "Raleway" sans-serif;
+}
+body{
+  box-sizing: border-box;
+  margin:0;
+}
+@media screen and (max-width: 768px){
+  .container{
+  width: 100%;
+}
+.header-container{
+  width:100%;
+}
+.navbar-container{
+  justify-content:start ;
+  padding:0;
+  width:100%;
+}
+.nav-container{
+  width:100%;
+  justify-content: space-between;
+  padding:0 20px;
+}
+
+.profile-container{
+  justify-content: start;
+}
+.profile{
+  width:100%;
+}
+.sections-container{
+  display:flex;
+  /* justify-content: space-between; */
+  flex-direction: column;
+  /* height:100vh; */
+}
+.left-sidebar{
+ margin-bottom:10px;
+ width:100%;
+ position:unset;
+ border:none;
+ padding-top:5px;
+}
+.fixed-sidebar{
+  position:fixed;
+  top:50px;
+  width:100%;
+  z-index:1;
+  display:flex;
+  justify-content: space-between;
+  padding:10px 20px;
+  background-color: var(--textwhite);
+}
+.right-sidebar{
+  position:unset;
+}
+.fa-bars{
+  display:block;
+}
+.fixed-right-sidebar{
+  width:100%;
+  z-index:0;
+  position:unset;
+
+}
+.title-holder{
+  font-size:6px;
+}
+.title-underline{
+  top:15px;
+  width:60px;
+  height:3px;
+}
+.bottom-line{
+  top:45px;
+}
+
+.profile-image{
+  width:50px;
+
+}
+.mobile-view{
+  display:flex;
+  justify-content: space-between;
+  padding:0 20px;
+}
+.position-admin-links{
+  position:relative;
+  z-index:2;
+}
+.sidebar-holder{
+  padding:15px 30px;
+  margin:10px 10px;
+  border-radius:5px;
+  display:none;
+  position:absolute;
+  top:5px;
+  z-index:3;
+  width:95%;
+  background-color: var(--skillBackground);
+}
+.skill-bar{
+  width:100%;
+  margin:0;
+  padding:0px 20px;
+}
+.skill-title{
+  font-size:11px;
+}
+.skill-underline{
+  width:11vw;
+  top:14px;
+  height:2px
+}
+.add-skill{
+  width:16vw;
+  padding:0;
+  text-align:center;
+  display:flex;
+  justify-content: center;
+  align-items:center;
+}
+.skills-rating{
+  margin:10px auto;
+  padding:10px 20px;
+}
+/* articles mobile view */
+.section-container{
+  width:100%;
+  margin-bottom:20px;
+}
+/* .articles-holder .list-value{
+  width: 20px;
+} */
+.section-title{
+  padding:0;
+  height:8vh;
+  margin:0;
+  width:100%;
+  box-shadow: none;
+  position:fixed;
+  top:80px;
+  z-index:1;
+}
+
+.title-article{
+  font-size:15px;
+  padding:0px 20px;
+}
+.section-content{
+  display:flex;
+  flex-direction: column;
+  width:100%;
+  padding:20px 20px;
+  margin-top:40px;
+}
+.article-card{
+  width:100%;
+  height:82vh;
+}
+
+.article-owner-image{
+  width:100%;
+}
+.article-owner-image img{
+  width:270px;
+}
+.article-line{
+  width:35vw
+}
+
+/* responsiveness of the model skills add and update*/
+.model-content-skills{
+  width:90%;
+  margin:30% auto;
+  height:65vh;
+}
+.form-field{
+  padding:5px;
+  margin-top:10px;
+}
+.selection{
+  width:80%;
+}
+.save-language-btn,.save-language-update-btn{
+  margin-top:40px;
+  width:20vw;
+}
+.cancel-language-btn,.cancel-language-update-btn{
+  margin-top:40px;
+  width:20vw;
+}
+.skills-underline{
+  width:30vw;
+  height:2px;
+}
+
+/* skills delete model */
+
+.model-content-delete{
+  width:80%;
+  margin:40% auto;
+}
+.comfirm-skill-delete{
+  width:20vw;
+  height:5vh;
+}
+.cancel-skill-delete{
+  width:20vw;
+  height:5vh;
+}
+/* delete a blog model */
+
+.comfirm{
+  width:20vw;
+  height:5vh;
+}
+.cancel-delete{
+  width:20vw;
+  height:5vh;
+}
+/* update a blog  */
+
+.model-content{
+  width:90%;
+  padding:10px;
+  margin:60px auto;
+  min-height:100vh;
+}
+.model-title{
+  padding:10px;
+  font-size:10px;
+}
+.create-article-underline{
+  top:30px;
+  left:15px;
+  width:30vw;
+  height:2px;
+}
+.create-article-form{
+  width:100%;
+  margin-top:20px;
+  position:relative;
+  padding-top:5px;
+  height:100vh;
+}
+.create-article-title{
+  padding:5px;
+  margin:10px auto;
+}
+.create-article-title .title-create{
+  padding:5px;
+  width:100%;
+}
+.upload-article-image{
+  padding:5px;
+}
+.upload-article-image input{
+  width:100%;
+}
+.preview-picture{
+  width:96%;
+  height:27vh;
+}
+.article-content{
+  width:96%;
+  height:27vh;
+}
+.position-content{
+  padding-top:20px;
+  justify-content: center;
+  position: absolute;
+  top:500px;
+}
+.submit-cancel-btn{
+  width:100%;
+}
+.submit-update-btn{
+  width:28vw;
+}
+.submit-btn{
+  width:28vw;
+}
+.cancel-btn{
+  width:28vw;
+}
+.cancel-update-btn{
+  width:26vw;
+
+}
+.contact-querries{
+  width:55%;
+}
+.contact{width:63%;}
+
+.message-card{
+  min-height:48vh;
+}
+.error-message{
+  margin-left:50px;
+  margin-top:2px;
+}
+}
