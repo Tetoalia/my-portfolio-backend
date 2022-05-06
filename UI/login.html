@@ -1,80 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
-    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">   
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <title>Login</title>
-</head>
-<body>
-        <nav>
-          <div class="max-width">
-            <div class="logo"><a href="#blog">A<span>LIA</span></a></div>
-            <ul>
-                <li><a href="/index.html">Portfolio</a></li>
-                <li><a href="/blog.html">Blog</a></li>
-            </ul>
-          <div class="burger">
-            <div class="line1"></div>
-            <div class="line2"></div>
-            <div class="line3"></div>
-          </div>
-            <a href="/login.html" class="btn"> Login/Signup </a> 
-           </div>
-        
-        </nav>
+  </head>
+  <body>
+    <nav>
+      <div class="max-width">
+        <div class="logo">
+          <a href="#blog">A<span>LIA</span></a>
+        </div>
+        <ul>
+          <li><a href="/index.html">Portfolio</a></li>
+          <li><a href="/blog.html">Blog</a></li>
+        </ul>
+        <div class="burger">
+          <div class="line1"></div>
+          <div class="line2"></div>
+          <div class="line3"></div>
+        </div>
+        <a href="/login.html" class="btn"> Login/Signup </a>
+      </div>
+    </nav>
     <!-- //////////////////////////////////////////// -->
-<div class="container" id="container">
-    <div class="form-container sign-up-container">
+    <div class="container" id="container">
+      <div class="form-container sign-up-container">
         <form action="">
-            <h2>SIGN UP</h2>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <span>or use your email for registration</span>
-            <input type="text" name="name" placeholder="Name" id="name2">
-            <p class="error-message"></p>
-            <input type="text" name="email" placeholder="Email" id="email2">
-            <p class="error-email"></p>
-            <input type="password" name="password" placeholder="Password" id="password2">
-            <p class="error-password"></p>
-            <button class="abana">Sign Up</button>
-            <a href="#" id="signIn">Already have an account? Log In</a>
+          <h2>SIGN UP</h2>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
+          </div>
+          <span>or use your email for registration</span>
+          <input type="text" name="name" placeholder="Name" id="name2" />
+          <p class="error-message"></p>
+          <input type="text" name="email" placeholder="Email" id="email2" />
+          <p class="error-email"></p>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            id="password2"
+          />
+          <p class="error-password"></p>
+          <button class="abana">Sign Up</button>
+          <a href="#" id="signIn">Already have an account? Log In</a>
         </form>
-    </div>
+      </div>
 
-<div class="form-container sign-in-container">
-        <form class="signform" action="./admin.html"> 
-            <h2>LOG IN</h2>
-            <div class="social-container">
-                <a href="#" class="social"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
-            </div>
-            <span>or use your Account</span><br>
-           
-          <input autofocus type='email' placeholder="Enter your email" name="email" class="input input-error" id="email">
-          <span id="error11"></span><br>
-        
-          <input type='password'  placeholder="Enter your password" class="input input-error" name="password" id="password">
-          <span id="error12"></span><br>
+      <div class="form-container sign-in-container">
+        <form class="signform" action="./admin.html">
+          <h2>LOG IN</h2>
+          <div class="social-container">
+            <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="social"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social"><i class="fab fa-linkedin"></i></a>
+          </div>
+          <span>or use your Account</span><br />
 
-        <a href="./admin.html">
-            <button class="abana login-btn" value="/admin.html"> Log In</button></a>
-            <a href="#" id="signUp">Click here to create Account !</a>
+          <input
+            autofocus
+            type="email"
+            placeholder="Enter your email"
+            name="email"
+            class="input input-error"
+            id="email"
+          />
+          <span id="error11"></span><br />
 
+          <input
+            type="password"
+            placeholder="Enter your password"
+            class="input input-error"
+            name="password"
+            id="password"
+          />
+          <span id="error12"></span><br />
+
+          <a href="./admin.html">
+            <button class="abana login-btn" value="./admin.html">
+              Log In
+            </button></a
+          >
+          <a href="#" id="signUp">Click here to create Account !</a>
         </form>
+      </div>
     </div>
-
-</div>
-<script src="main.js"></script>
-<script src="./munye/js/loginformValidation.js"> </script>
-
-</body>
+    <script src="main.js"></script>
+    <script src="./munye/js/loginformValidation.js"></script>
+  </body>
 </html>

@@ -31,8 +31,6 @@ import { verifyToken } from "../controllers/verifyToken";
  *     description: Access to Likes
  *   - name: Queries
  *     description: Access to Queries
- *   - name: Comment
- *     description: Access to Comments
  * components:
  *   schemas:
  *     Query:
